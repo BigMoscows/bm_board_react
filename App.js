@@ -1,25 +1,47 @@
 import React, { Component } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import data from "./data/index.js";
+import { List, ListItem } from "react-native-elements";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default class App extends Component {
+export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       items: data,
+      playingId: -1
     };
   }
 
   render() {
-    console.log(this.state.items);
     return (
-      <View style={styles.container}>
-        <FlatList
-          data={this.state.items}
-          renderItem={({ item }) =>
-            <Text style={styles.item}>{item.label}</Text>
-          }
-        />
+      <View >
+        <List >
+          <FlatList
+            data={this.state.items}
+            renderItem={({ item, index }) => (
+
+              <ListItem
+                title={item.label}
+                containerStyle={styles.container}
+                // subtitleContainerStyle={{mar}}
+                rightIcon={this.state.playingId == index ? (<Icon style={styles.icon} color="black" name="stop" size={20}
+                  onPress={() => {
+                    this.setState({
+                      playingId: -1
+                    })
+                  }} />) : (<Icon style={styles.icon} color="black" name="play" size={20}
+                    onPress={() => {
+                      this.setState({
+                        playingId: index
+                      })
+                    }} />)}
+              />
+            )}
+            extraData={this.state}
+            keyExtractor={item => item.label}
+          />
+        </List>
       </View>
     );
   }
@@ -27,12 +49,15 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingTop: 22,
+    borderRadius: 5,
+    backgroundColor: "#F3F3F3",
+    marginHorizontal: 10,
+    marginVertical: 5,
   },
-  item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44,
+  icon: {
+    marginEnd: 10,
+    padding: 20
   },
 });
+
+export default App

@@ -1,7 +1,8 @@
 const data = [
     {
        sound: "ahah.mp3",
-       label: "Ah Ah"
+       label: "Ah Ah",
+       playing: false,
     },
     {
        sound: "austra.mp3",
