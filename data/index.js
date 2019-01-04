@@ -2,7 +2,6 @@ const data = [
     {
        sound: "ahah.mp3",
        label: "Ah Ah",
-       playing: false,
     },
     {
        sound: "austra.mp3",
@@ -34,7 +33,7 @@ const data = [
     },
     {
        sound: "cant_understand_stuff.mp3",
-       label: "Can\\'t understand stuff"
+       label: "Can't understand stuff"
     },
     {
        sound: "diosss.mp3",
@@ -54,15 +53,15 @@ const data = [
     },
     {
        sound: "dont_entry_0.mp3",
-       label: "Don\\'t entry 0"
+       label: "Don't entry 0"
     },
     {
        sound: "dont_entry_1.mp3",
-       label: "Don\\'t entry 1"
+       label: "Don't entry 1"
     },
     {
        sound: "dont_entry_2.mp3",
-       label: "Don\\'t entry 2"
+       label: "Don't entry 2"
     },
     {
        sound: "door_0.mp3",
@@ -82,7 +81,7 @@ const data = [
     },
     {
        sound: "dunno.mp3",
-       label: "Don\\'t know"
+       label: "Don't know"
     },
     {
        sound: "each_start.mp3",
@@ -126,7 +125,7 @@ const data = [
     },
     {
        sound: "if_i_dont_blaspheme_look.mp3",
-       label: "If I don\\'t blaspheme look"
+       label: "If I don't blaspheme look"
     },
     {
        sound: "iron_toucher.mp3",
@@ -138,7 +137,7 @@ const data = [
     },
     {
        sound: "lets_go.mp3",
-       label: "Let\\'s go"
+       label: "Let's go"
     },
     {
        sound: "long_field.mp3",
@@ -146,7 +145,7 @@ const data = [
     },
     {
        sound: "lot_of_time.mp3",
-       label: "Lot\\'s of time"
+       label: "Lot's of time"
     },
     {
        sound: "madonna_0.mp3",
@@ -230,7 +229,7 @@ const data = [
     },
     {
        sound: "tu_quoque.mp3",
-       label: "Tu quoqu"
+       label: "Tu quoque"
     },
     {
        sound: "vocalizations.mp3",
