@@ -3,13 +3,15 @@ import { FlatList, StyleSheet, View, StatusBar } from 'react-native';
 import data from "./data/index.js";
 import { ListItem } from "react-native-elements";
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Sound from 'react-native-sound';
 
 export class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
             items: data,
-            playingId: -1
+            playingId: -1,
+            sound: undefined
         };
     }
 
@@ -39,14 +41,17 @@ export class Home extends Component {
                             containerStyle={styles.container}
                             rightIcon={this.state.playingId == index ? (<Icon style={styles.icon} color="black" name="stop" size={20}
                                 onPress={() => {
+                                    this.state.sound.stop().release()
                                     this.setState({
-                                        playingId: -1
+                                        playingId: -1,
+                                        sound: undefined
                                     })
                                 }} />) : (<Icon style={styles.icon} color="black" name="play" size={20}
                                     onPress={() => {
                                         this.setState({
                                             playingId: index
                                         })
+                                        this._playSound(item.sound)
                                     }} />)}
                         />
                     )}
@@ -55,6 +60,27 @@ export class Home extends Component {
                 />
             </View>
         );
+    }
+
+    _playSound(soundFile) {
+        const callback = (error, sound) => {
+            if (error) {
+                console.log('failed to load the sound', error);
+                return;
+            }
+            sound.play(() => {
+                console.log('successfully finished playing');
+                sound.release();
+                this.setState({
+                    playingId: -1,
+                    sound: undefined
+                })
+            });
+        };
+
+        this.setState({
+            sound: new Sound(soundFile, Sound.MAIN_BUNDLE, error => callback(error, this.state.sound))
+        })
     }
 }
 
